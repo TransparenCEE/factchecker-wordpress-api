@@ -1,9 +1,15 @@
+# Factchecker Wordpress API
+Wordpress plugin serving data for factchecker-plugin-chrome 
+
 This module import data, factchecks, from factual.ro wordpress website and insert the data into separated administrative area. 
+
 Admin import factchecks page: http://www.factual.ro/api/administrative/factcheck_content.php
 The imported factchecks are listed in admin. A link can be asigned to each item: http://www.factual.ro/api/administrative/factchecks_list.php 
-Factchecks can be retreived using JSON API. API request example http://www.factual.ro/api/?q=a5605c929a9611efaaa5ba66bbafc7bf
-"q" variable is a md5 code of the assigned link.
-Response:
+
+Factchecks can be retreived using JSON API. API request example http://www.factual.ro/api/?q=a5605c929a9611efaaa5ba66bbafc7bf, where `q` variable is a md5 hash of the queried article url.
+
+Example response:
+```
 {
 "q":"a5605c929a9611efaaa5ba66bbafc7bf",
 "data":{
@@ -18,7 +24,8 @@ Response:
 }
 }
 }
-The response contains factchecks assigned with the requested link.
+```
+The response contains factchecked statmenets assigned with the requested url.
 
 Admin API stats page provide statistics about API requests http://www.factual.ro/api/administrative/api_stats.php
 
@@ -31,5 +38,6 @@ Admin scripts:
 - factchecks_links_list_ajax.php - edit/disable a link
 - factchecks_csv_import_ajax.php - assign multiple links from a CV file
 - api_stats.php - API statistics
+
 API SCRIPT:
 - index.php - return the factchecks in JSON format
