@@ -6,6 +6,7 @@ $no_items_per_page = 20;
 
 $request_insert_array = array(
     'q' => $_GET['q'],
+    'user' => $_GET['u'],
     'ip' => getip(),
     'request' => $_SERVER['REQUEST_URI'],
 );
@@ -22,27 +23,23 @@ if (!isset($_REQUEST['q']) || trim($_REQUEST['q']) == '') {
 $DISPLAY_custom_factcheck = false;
 
 $api_content_array = array();
-$sql_get_content = "SELECT id_factcheck,factcheck_link,post_datetime,declaratie,context,status,concluzie, url_sursa as sursa FROM factcheck_content ";
+
+$fields_to_get_factchecks = "a.id_factcheck, a.factcheck_link, a.post_datetime, a.context, a.status, a.concluzie, a.url_sursa as sursa";
 switch ($_GET['q']) {
     case 'all':
         //$total_items = $res_get_content->numRows();
+        $sql_get_content = "SELECT $fields_to_get_factchecks FROM factcheck_content a ORDER BY post_datetime DESC";
         $api_content_array['q'] = 'all';
         break;
     default:
-        $sql_check_code = "SELECT id_factcheck FROM factcheck_content2links WHERE md5_link_identifier='" . $db_read->escape($_GET['q']) . "' AND status='active'";
-        $codes_get_array = $db_read->queryCol($sql_check_code);
-        if (!is_array($codes_get_array) || count($codes_get_array) == 0) {
-            $api_content_array['error'] = 'Code not found';
-            echo json_encode($api_content_array);
-            request_insert($request_insert_array, 'y', 'nf');
-            exit();
-        }
+        $sql_get_content = "SELECT $fields_to_get_factchecks, b.snippet as declaratie FROM factcheck_content a "
+                . " RIGHT JOIN factcheck_content2links b ON a.id_factcheck=b.id_factcheck"
+                . " WHERE b.md5_link_identifier='" . $db_read->escape($_GET['q']) . "' AND b.status='active'"
+                . " ORDER BY post_datetime DESC"
+        ;
         $api_content_array['q'] = $_GET['q'];
-
-        $sql_get_content .= " WHERE id_factcheck " . (count($codes_get_array) == 1 ? ' = ' . $codes_get_array[0] : " IN (" . implode(",", $codes_get_array) . ")");
         $DISPLAY_custom_factcheck = true;
 }
-$sql_get_content .= " ORDER BY post_datetime DESC";
 //$res_get_content = $db_read->query($sql_get_content);
 //echo $sql_get_content;
 
@@ -78,52 +75,60 @@ if ($_GET['q'] == 'all') {
 
 if (!empty($page_data) && is_array($page_data) && $page_data['totalItems'] > 0) {
     foreach ($page_data['data'] as $row_get_data) {
-        $declaratie = '';
-        $snippets = $db_read->queryCol("SELECT snipped FROM factcheck_content2links WHERE id_factcheck = " . $row_get_data['id_factcheck'] . " AND md5_link_identifier='" . $db_read->escape($_GET['q']) . "' AND status='active'");
-        if (is_array($snippets) && count($snippets) > 0) {
-          $declaratie = $snippets[0];
+        if ($DISPLAY_custom_factcheck) {
+            $api_content_array['data'][$row_get_data['id_factcheck']]['declaratie'] = $row_get_data['declaratie'];
         }
-        $api_content_array['data'][$row_get_data['id_factcheck']]['declaratie'] = $declaratie;
         $api_content_array['data'][$row_get_data['id_factcheck']]['context'] = $row_get_data['context'];
         $api_content_array['data'][$row_get_data['id_factcheck']]['status'] = $row_get_data['status'];
         $api_content_array['data'][$row_get_data['id_factcheck']]['concluzie'] = $row_get_data['concluzie'];
         $api_content_array['data'][$row_get_data['id_factcheck']]['sursa'] = $row_get_data['sursa'];
         $api_content_array['data'][$row_get_data['id_factcheck']]['url'] = $row_get_data['factcheck_link'];
         $api_content_array['data'][$row_get_data['id_factcheck']]['date'] = strtotime($row_get_data['post_datetime']);
-
-        if($DISPLAY_custom_factcheck){
+        if (!$DISPLAY_custom_factcheck) {
+            $api_content_array['data'][$row_get_data['id_factcheck']]['links'] = array();
+            $sql_get_urls = "SELECT link_content, snippet FROM factcheck_content2links WHERE id_factcheck={$row_get_data['id_factcheck']}";
+            $res_get_urls = $db_read->query($sql_get_urls);
+            while ($row_get_urls = $res_get_urls->fetchRow()) {
+                $api_content_array['data'][$row_get_data['id_factcheck']]['links'][] = array($row_get_urls['link_content'], $row_get_urls['snippet']);
+            }
+        }
+        if ($DISPLAY_custom_factcheck) {
             $table_fields_values = array(
                 'id_factcheck' => $row_get_data['id_factcheck'],
                 'q' => $_GET['q'],
+                'user' => $_GET['u'],
                 'ip' => getip(),
             );
             $db_write->extended->autoExecute('api_factchecks', $table_fields_values, MDB2_AUTOQUERY_INSERT);
         }
     }
-}else{
-    request_insert($request_insert_array, 'y', 'em');
+} else {
+    if ($DISPLAY_custom_factcheck) {
+        $api_content_array['error'] = 'Code not found';
+        echo json_encode($api_content_array);
+        request_insert($request_insert_array, 'y', 'nf');
+        exit();
+    } else {
+        request_insert($request_insert_array, 'y', 'em');
+    }
 }
 
 if (isset($_GET['debug']) && $_GET['debug'] == 'y') {
     print "<pre>";
     print_r($api_content_array);
-     request_insert($request_insert_array, 'n', 'k', $num_elements);
+    request_insert($request_insert_array, 'n', 'k', $num_elements);
 } else {
     echo json_encode($api_content_array);
     request_insert($request_insert_array, 'n', 'k', $num_elements);
 }
 exit();
 
-
-/*
- *
- */
-
-function request_insert($content, $error = 'N', $message = '', $items=0) {
-    global $db_write, $_SERVER;
+function request_insert($content, $error = 'N', $message = '', $items = 0) {
+    global $db_write, $_SERVER, $_GET;
     $table_fields_values = array(
         'items' => $items,
         'q' => $content['q'],
+        'user' => $_GET['u'],
         'ip' => $content['ip'],
         'request' => $content['request'],
         'error' => $error,
@@ -145,13 +150,7 @@ function getip() {
                 return trim($ip);
             }
         }
-        //foreach (explode(",",$_SERVER["HTTP_X_FORWARDED_FOR"]) as $ip) {
-        //      if (validip(trim($ip))) {
-        //              return trim($ip);
-        //      }
-        //}
     }
-
     if (isset($_SERVER['HTTP_X_FORWARDED']) && validip($_SERVER["HTTP_X_FORWARDED"])) {
         return $_SERVER["HTTP_X_FORWARDED"];
     } elseif (isset($_SERVER['HTTP_FORWARDED_FOR']) && validip($_SERVER["HTTP_FORWARDED_FOR"])) {

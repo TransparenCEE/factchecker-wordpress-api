@@ -1,0 +1,221 @@
+/* CSS Document */
+
+body {
+	padding:0px;
+	margin:0px;
+	background: #FFFFFF;
+	font-family: Trebuchet MS;
+	font-size: 11px;
+	color: #00578E;
+}
+td	{
+	font-family: Arial, Helvetica, sans-serif;
+	background: #FFFFFF;
+	color:#333333;
+	font-size:12px;
+}
+form {padding:0; margin:0}
+
+.head {
+	display:none;
+}
+.content{ font-size: 12px;}
+/* Clasa care vine pe Td-ul meniului din stanga.Folosita in tree */
+.menuTd{width:200px; height:24px; line-height:23px; background:#F4EFE6; border-bottom: 1px solid #FFFFFF;}
+/* Clasa care vine pe Td-ul meniului din stanga pentru categoriile de nivelul 1(este cu inaltimea 0 tocmai sa nu apara).Folosita in tree */
+.menuTdFirst{width:200px; height:0px; line-height:23px; background:#00578E; border-bottom: 1px solid #FFFFFF;}
+a	{
+	color: #000000;
+	font-size: 11px;
+}
+a:hover	{
+	color: #998A6D;
+}
+.buttonStyle {WIDTH: 100px; font-family: Arial; font-size: 11px; font-weight: bold; color: navy; border: 1px solid GRAY; background-color: #ECECEC; padding-left: 2; padding-right: 2;cursor: hand;}
+
+.linkGrey{color: #333333}
+.linkGrey:hover{color: #000000}
+
+.navigation {font-size: 11; text-align: right; padding: 7px; background:#E3E3E3; border-left: 1px solid white; clear:both; text-align:center}
+.navigation a {padding: 2px 5px; margin: 0 5px;}
+.navigation a:hover {}
+.navigationInactive {padding: 2px 4px; margin: 0 4px}
+.navigationSpan {margin: 0 10px}
+
+.pageTitle{ width:95%;line-height:30px; background:#D70000; color: #FFFFFF; font-size: 12px; font-weight:bold; border: 1px solid #000000;padding-left: 10px; text-align:left}
+.pageFilter{height: 50px; line-height:50px; background:#E2EFFC; color: #333333; font-size: 12px; border-bottom: 1px solid #FFFFFF; border-left: 1px solid #FFFFFF; padding: 5px 10px; clear:both}
+
+.tdLightBlue{background:#E2EFFC; margin-top: -10px; }
+.tdLightGrey{background:#F2F2F2;}
+.tdLightGrey2{background:#E6E6E6;}
+
+/* Grid related stuff */
+.noBorder{border:none;}
+.errorMessage{color:#CC0000; font-weight:bold;}
+.Grid {width:95%;font-size:14px}
+
+.GridHeader
+{
+
+}
+
+.GridItem	{
+	color: White;
+    background-color: Black;
+	font-weight : bold;
+}
+
+.GridOverItem
+{
+    background-color: Silver;
+	font-weight : bold;
+	cursor:hand;
+}
+
+.GridSelectedItem
+{
+    background-color: White;
+    color: Black;
+    font-weight : bold;
+}
+
+.GridPager
+{
+	width:100%;
+	height:20px;
+    text-decoration:none;
+}
+/* End Grid related stuff */
+
+/* menu  */
+/* Clasa care vine pe Td-ul meniului din stanga.Folosita in tree */
+.menu_node_level_1{
+	display: none;
+}
+.menu_node_level_1 a	{
+	display: none;
+}
+.menu_node_level_2{
+	display: none;
+}
+.menu_node_level_2 a.link{
+	display: none;
+}
+.menu_node_level_3{
+	display: none;
+}
+.menu_node_level_3 a.link	{
+	display: none;
+}
+.menu_node_level_4{
+	display: none;
+}
+.menu_node_level_4 a.link	{
+	display: none;
+}
+.menu_node_level_5{
+	display: none;
+}
+.menu_node_level_5 a.link	{
+	display: none;
+}
+.menu_node_level_6{
+	display: none;
+}
+.menu_node_level_6 a.link	{
+	display: none;
+}
+
+/* Clasa care vine pe Td-ul meniului din stanga pentru categoriile de nivelul 1(este cu inaltimea 0 tocmai sa nu apara).Folosita in tree */
+.menuTdFirst{display: none;}
+
+.menu_node_level_2_active {padding-left:15px; background: url(../images/sub-level-1-bullet-active.gif) no-repeat 0px 3px; font-size:12px; font-weight:bold; line-height:24px; vertical-align: middle; color:#009900}
+.menu_node_level_3_active {padding-left:15px; background: url(../images/sub-level-2-bullet-active.gif) no-repeat 0px 3px; font-size:12px; font-weight:bold; line-height:24px; vertical-align: middle; color:#009900}
+.menu_node_level_4_active {padding-left:15px; background: url(../images/sub-level-3-bullet-active.gif) no-repeat 0px 3px; font-size:12px; font-weight:bold; line-height:24px; vertical-align: middle; color:#009900}
+.menu_node_level_5_active {padding-left:15px; background: url(../images/sub-level-4-bullet-active.gif) no-repeat 0px 3px; font-size:12px; font-weight:bold; line-height:24px; vertical-align: middle; color:#009900}
+.menu_node_level_6_active {padding-left:15px; background: url(../images/sub-level-5-bullet-active.gif) no-repeat 0px 3px; font-size:12px; font-weight:bold; line-height:24px; vertical-align: middle; color:#009900}
+
+.text_s {font-size:10px; line-height:14px}
+.text_m {font-size:11px; line-height:16px}
+.text_m1 {font-size:12px; line-height:18px}
+.text_l {font-size:13px; line-height:20px}
+.text_xl {font-size:15px; line-height:22px}
+
+.text_l_white {font-size:13px; color:#FFFFFF}
+.text_l_white:hover {font-size:13px; color:#E6EEF6}
+
+.text_l_00578E {font-size:13px; color:#998A6D}
+
+
+.list_item {font-size:16px; line-height:20px; vertical-align:top; padding-left: 18px; background: url(../images/list-icon-section.gif) no-repeat 0 3; color:#333333;}
+.list_item a {font-weight:bold; font-size:16px;}
+
+.tabs_td {border-bottom:2px solid #BBBBBB}
+
+.tabs_curent {display:inline; float:left; margin: 0 5px -2px 15px; position:relative; background:#f4f4f4; padding:0 10px; line-height:30px; border-bottom:2px solid #f4f4f4; border-left:2px solid #BBBBBB; border-right:2px solid #BBBBBB; border-top:2px solid #BBBBBB; font-weight:bold; font-size:14px;}
+.tabs_active {display:inline; float:left; margin: 0 5px -2px 15px; position:relative; padding:0 10px;  line-height:30px; border:2px solid #BBBBBB; background:#CCEBFF; font-weight:bold; font-size:14px;}
+.tabs_active:hover {background:#efefef;}
+.tabs_inactive {display:inline; float:left; margin: 0 5px -2px 15px; position:relative; padding:0 10px;  line-height:30px; border:2px solid #BBBBBB; background:#efefef; font-weight:bold; font-size:14px;}
+
+.space_form {font-size: 12px; margin: 0 5px;}
+
+.grid tr td	{
+	padding: 5px;
+	border-bottom: 1px solid #DDDDDD;
+	font-family: Trebuchet MS;
+	font-size: 11px;
+	color: #000000;
+}
+.grid tr td.head	{
+	padding: 5px;
+	border-bottom: 1px solid #000000;
+	font-family: Trebuchet MS;
+	font-size: 12px;
+	color: #000000;
+	background-color: #F4EFE6;
+}
+.grid tr td.section	{
+	width:95%;
+	background:#998A6D;
+	color: #FFFFFF;
+	font-size: 12px;
+	font-weight:bold;
+	border: 1px solid #000000;
+	padding-left: 10px;
+	text-align:left;
+}
+.tree tr td	{
+	border-bottom: 0px;
+	padding: 0px;
+	font-family: Trebuchet MS;
+	font-size: 11px;
+	color: #998A6D;
+}
+.input	{
+	font-family: Trebuchet MS;
+	font-size: 11px;
+	color: #00578E;
+	border: 1px solid #998A6D;
+	background-color: #FFFFFF;
+}
+select	{
+	font-family: Trebuchet MS;
+	font-size: 11px;
+	color: #000000;
+}
+fieldset	{
+	font-family: Trebuchet MS;
+	font-size: 11px;
+	color: #00578E;
+	border: 1px solid #998A6D;
+}
+#menu_td	{
+	display: none;
+}
+#header_table	{
+	display: none;
+}
+
+.td_menu{
+	display: none;
+}

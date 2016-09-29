@@ -5,10 +5,8 @@ $action = $_POST['action'];
 $id_link = $_POST['id_link'];
 $msg = '';
 $separator = '%$';
-$snipped = '';
+$snippet = '';
 $msgAction = '';
-//echo '<pre>'; print_r($_POST); echo '</pre>';
-
 
 if($id_link ) {
 	$sql_verify = "SELECT status FROM factcheck_content2links WHERE id_link = '".$db_write->escape($id_link) . "' ";
@@ -19,17 +17,17 @@ if($id_link ) {
 			$result = $db_write->extended->autoExecute('factcheck_content2links', $table_fields_values, MDB2_AUTOQUERY_UPDATE, " id_link = '$id_link' " );
 			$msgAction = 'linkDisabled';
 		}
-		if($action == 'modify_snipped') {
-			$snipped = $db_write->escape(strip_tags($_POST['snipped']));
-			$table_fields_values['snipped'] = $snipped;
+		if($action == 'modify_snippet') {
+			$snippet = $db_write->escape(strip_tags($_POST['snippet']));
+			$table_fields_values['snippet'] = $snippet;
 			$result = $db_write->extended->autoExecute('factcheck_content2links', $table_fields_values, MDB2_AUTOQUERY_UPDATE, " id_link = '$id_link' " );
-			$msgAction = 'snippedModified';
+			$msgAction = 'snippetModified';
 		}
 	} else {
 		$msgAction = 'linkNoExists';
 		$result = 0;
 	}
-	$msg = $msgAction . $separator . $result . $separator . $snipped;
+	$msg = $msgAction . $separator . $result . $separator . $snippet;
 }
 
 echo $msg;

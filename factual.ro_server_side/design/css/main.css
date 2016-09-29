@@ -1,0 +1,460 @@
+/* CSS Document */
+
+body {
+    padding:0px;
+    margin:0px;
+    background: #FFFFFF;
+    font-family: Arial;
+    font-size: 11px;
+    color: #00578E;
+}
+
+.main_content{
+    width: 100%;
+    float: left;
+}
+
+.menu_all{
+    background:#FFFFFF;
+    float: left;
+}
+.site_content{
+    padding-left: 2%;
+    width: 78%;
+    background:#FFFFFF;
+    float: left;
+}
+/*
+td	{
+        font-family: Arial, Helvetica, sans-serif;
+        background: #FFFFFF;
+        color:#333333;
+        font-size:12px;
+}
+}
+*/
+form {padding:0; margin:0}
+.subTabActions
+{
+    font-size: 14px;
+    font-weight:bold;
+    color:#FFFFFF;
+    padding:5px;
+    float:right;
+    margin:3px;
+    vertical-align: middle;
+    background:#00578E;
+    border: solid 1 px #000000
+}
+.head {
+    border-bottom:1px solid #000000;
+    border-right:1px solid #000000;
+    border-left:1px solid #000000;
+    border-top:1px solid #000000;
+    margin-bottom:5px;
+    background:#FFFFFF;
+}
+.content{ font-size: 12px;}
+/* Clasa care vine pe Td-ul meniului din stanga.Folosita in tree */
+.menuTd{height:24px; line-height:23px; background:#F3F3F3; border-bottom: 1px solid #FFFFFF;}
+/* Clasa care vine pe Td-ul meniului din stanga pentru categoriile de nivelul 1(este cu inaltimea 0 tocmai sa nu apara).Folosita in tree */
+.menuTdFirst{height:0px; line-height:23px; background:#00578E; border-bottom: 1px solid #FFFFFF;}
+a{
+    color: #00578E;
+    font-size: 11px;
+}
+a:hover	{
+    color: #0033EE;
+}
+.buttonStyle {WIDTH: 100px; font-family: Arial; font-size: 11px; font-weight: bold; color: navy; border: 1px solid GRAY; background-color: #ECECEC; padding-left: 2; padding-right: 2;cursor: hand;}
+
+.linkGrey{color: #333333}
+.linkGrey:hover{color: #000000}
+
+.navigation {font-size: 11px; text-align: right; padding: 7px; background:#E3E3E3; border-left: 1px solid white; clear:both; text-align:center}
+.navigation a {padding: 2px 5px; margin: 0 5px;}
+.navigation a:hover {}
+.navigationInactive {padding: 2px 4px; margin: 0 4px}
+.navigationSpan {margin: 0 10px}
+
+.pageTitle{ width:95%;line-height:30px; background:#00578E; color: #FFFFFF; font-size: 14px; font-weight:bold; border: 1px solid #000000;padding-left: 10px; text-align:left}
+.pageFilter{height: 50px; line-height:50px; background:#E2EFFC; color: #333333; font-size: 12px; border-bottom: 1px solid #FFFFFF; border-left: 1px solid #FFFFFF; padding: 5px 10px; clear:both}
+
+.tdLightBlue{background:#E2EFFC; margin-top: -10px; }
+.tdLightGrey{background:#F2F2F2;}
+.tdLightGrey2{background:#E6E6E6;}
+
+/* Grid related stuff */
+.noBorder{border:none;}
+.errorMessage{color:#CC0000; font-weight:bold;}
+.Grid {width:95%;font-size:14px}
+
+.GridHeader
+{
+
+}
+
+.GridItem	{
+    color: White;
+    background-color: Black;
+    font-weight : bold;
+}
+
+.GridOverItem
+{
+    background-color: Silver;
+    font-weight : bold;
+    cursor:hand;
+}
+
+.GridSelectedItem
+{
+    background-color: White;
+    color: Black;
+    font-weight : bold;
+}
+
+.GridPager
+{
+    width:100%;
+    height:20px;
+    text-decoration:none;
+}
+/* End Grid related stuff */
+
+/* menu  */
+/* Clasa care vine pe Td-ul meniului din stanga.Folosita in tree */
+.menu_node_level_1{
+    display: none;
+    font-size:12px;
+}
+.menu_node_level_1 a	{
+    display: none;
+    font-size:12px;
+}
+.menu_node_level_2{
+    padding-left: 5px;	
+    height:25px;
+    background:url(../images/bg_menu_level_I.gif) repeat-x;
+    font-size:12px;
+}
+.menu_node_level_2 a.link	{
+    padding-left:15px;background: url(../images/sub-level-1-bullet-active.gif) no-repeat 0px 3px; font-size:12px;color: #2A68BD; font-weight:bold; line-height:24px; vertical-align: middle;
+}
+
+.menu_node_level_3{
+    padding-left: 5px;	
+    background:#F3F3F3;
+    border-bottom: 1px solid #FFFFFF;
+}
+.menu_node_level_3 a.link {padding-left:15px; background: url(../images/sub-level-2-bullet.gif) no-repeat 0px 3px; font-size:12px; font-weight:bold; line-height:24px; vertical-align: middle;}
+
+.menu_node_level_4{
+    padding-left: 5px;
+    height:24px;
+    line-height:23px;
+    background:#F3F3F3;
+    border-bottom: 1px solid #FFFFFF;
+    font-size:12px;
+}
+.menu_node_level_4 a.link{padding-left:15px; background: url(../images/sub-level-3-bullet.gif) no-repeat 0px 3px; font-size:12px; font-weight:bold; line-height:24px; vertical-align: middle;}
+
+.menu_node_level_5{
+    padding-left: 5px;
+    height:24px;
+    line-height:23px;
+    background:#F3F3F3;
+    border-bottom: 1px solid #FFFFFF;
+    font-size:12px;
+}
+.menu_node_level_5 a.link	{padding-left:15px; background: url(../images/sub-level-4-bullet.gif) no-repeat 0px 3px; font-size:12px; font-weight:bold; line-height:24px; vertical-align: middle;}
+.menu_node_level_6{
+    padding-left: 5px;
+    height:24px;
+    line-height:23px;
+    background:#F3F3F3;
+    border-bottom: 1px solid #FFFFFF;
+    font-size:12px;
+}
+.menu_node_level_6 a.link	{padding-left:15px; background: url(../images/sub-level-5-bullet.gif) no-repeat 0px 3px; font-size:12px; font-weight:bold; line-height:24px; vertical-align: middle;}
+
+/* Clasa care vine pe Td-ul meniului din stanga pentru categoriile de nivelul 1(este cu inaltimea 0 tocmai sa nu apara).Folosita in tree */
+.menuTdFirst{height:0px; line-height:23px; background:#00578E; border-bottom: 1px solid #FFFFFF;}
+
+.menu_node_level_2_active {padding-left:15px; background: url(../images/sub-level-1-bullet-active.gif) no-repeat 0px 3px; font-size:12px; font-weight:bold; line-height:24px; vertical-align: middle; color:#F04E23}
+.menu_node_level_3_active {padding-left:15px; background: url(../images/sub-level-2-bullet-active.gif) no-repeat 0px 3px; font-size:12px; font-weight:bold; line-height:24px; vertical-align: middle; color:#F04E23}
+.menu_node_level_4_active {padding-left:15px; background: url(../images/sub-level-3-bullet-active.gif) no-repeat 0px 3px; font-size:12px; font-weight:bold; line-height:24px; vertical-align: middle; color:#F04E23}
+.menu_node_level_5_active {padding-left:15px; background: url(../images/sub-level-4-bullet-active.gif) no-repeat 0px 3px; font-size:12px; font-weight:bold; line-height:24px; vertical-align: middle; color:#F04E23}
+.menu_node_level_6_active {padding-left:15px; background: url(../images/sub-level-5-bullet-active.gif) no-repeat 0px 3px; font-size:12px; font-weight:bold; line-height:24px; vertical-align: middle; color:#F04E23}
+
+.text_s {font-size:10px; line-height:14px}
+.text_m {font-size:11px; line-height:16px}
+.text_m1 {font-size:12px; line-height:18px}
+.text_l {font-size:13px; line-height:20px}
+.text_xl {font-size:15px; line-height:22px}
+
+.text_l_white {font-size:13px; color:#FFFFFF}
+.text_l_white:hover {font-size:13px; color:#E6EEF6}
+
+.text_l_00578E {font-size:13px; color:#00578E}
+
+
+.list_item {font-size:16px; line-height:20px; vertical-align:top; padding-left: 18px; background: url(../images/list-icon-section.gif) no-repeat 0 3; color:#333333;}
+.list_item a {font-weight:bold; font-size:16px;}
+
+.tabs_td {border-bottom:2px solid #BBBBBB}
+
+.tabs_curent {display:inline; float:left; margin: 0 5px -2px 15px; position:relative; background:#f4f4f4; padding:0 10px; line-height:30px; border-bottom:2px solid #f4f4f4; border-left:2px solid #BBBBBB; border-right:2px solid #BBBBBB; border-top:2px solid #BBBBBB; font-weight:bold; font-size:14px;}
+.tabs_active {display:inline; float:left; margin: 0 5px -2px 15px; position:relative; padding:0 10px;  line-height:30px; border:2px solid #BBBBBB; background:#CCEBFF; font-weight:bold; font-size:14px;}
+.tabs_active:hover {background:#efefef;}
+.tabs_inactive {display:inline; float:left; margin: 0 5px -2px 15px; position:relative; padding:0 10px;  line-height:30px; border:2px solid #BBBBBB; background:#efefef; font-weight:bold; font-size:14px;}
+
+.space_form {font-size: 12px; margin: 0 5px;}
+
+.grid tr td	{
+    padding: 5px;
+    border-bottom: 1px solid #DDDDDD;
+    font-family: arial;
+    font-size: 11px;
+    color: #00578E;
+}
+.grid th {
+    border-bottom:1px solid #DCDCDC;
+    border-right:1px solid #DCDCDC;
+    border-left:1px solid #DCDCDC;
+    border-top:1px solid #DCDCDC;
+    font-size: 12px;
+    margin-bottom:5px;
+    background:#EAEAEA;
+    height:30px;
+    background: url(../images/bg_head_table.gif) repeat-x;
+}
+.grid tr td.head	{
+    padding: 5px;
+    border-bottom: 1px solid #000000;
+    font-family: arial ;
+    font-size: 12px;
+    color: #00578E;
+    background-color: #EAEAEA;
+}
+.grid tr td.section	{
+    width:95%;
+    background:#00578E;
+    color: #FFFFFF;
+    font-size: 12px;
+    font-weight:bold;
+    border: 1px solid #000000;
+    padding-left: 10px;
+    text-align:left;
+}
+.tree tr td	{
+    border-bottom: 0px;
+    padding: 0px;
+    font-family: arial ;
+    font-size: 11px;
+    color: #00578E;
+}
+.input	{
+    font-family: arial ;
+    font-size: 11px;
+    color: #00578E;
+    border: 1px solid #00578E;
+    background-color: #FFFFFF;
+}
+select	{
+    font-family: arial ;
+    font-size: 11px;
+    color: #00578E;
+}
+fieldset	{
+    font-family: arial ;
+    font-size: 11px;
+    color: #00578E;
+    border: 1px solid #00578E;
+}
+.on	{
+    color: #F04E23;
+}
+
+
+a.white	{
+    color: #FFFFFF;
+}
+a.white:hover	{
+    color: #FFFFFF;
+}
+
+.text_ok{font-size: 10pt; text-decoration:none; color:#006633; line-height: 12pt; font-weight:bold;}
+.text_not_ok{font-size: 10pt; text-decoration:none; color:#D00000; line-height: 12pt; font-weight:bold;}
+.td_even_row{
+    font-size: 8pt;
+    text-decoration:none;
+    color:#000000;
+    border-bottom:1px solid #e0e0e0;
+    background-color:#f5f5f5;
+    padding-left:20px;
+    background: url(../images/bg_td.gif) repeat-x;
+}
+.td_odd_row{
+    font-size: 8pt;
+    text-decoration:none;
+    color:#000000;
+    border-bottom:1px solid #e0e0e0;
+    background-color:#fafafa;
+    background: url(../images/bg_td_2.gif) repeat-x;	
+}
+
+.table_border{
+    border-bottom:1px solid #000000;
+    border-right:1px solid #000000;
+    border-left:1px solid #000000;
+    border-top:1px solid #000000;
+}
+
+.td_menu{
+    width: 250px;
+}
+
+.required_field{
+    background-color: #FFCCCC;
+}
+.required_star{
+    color: #D00;
+    font-weight: bold;
+    font-size: 10pt;
+}
+
+.success_message{
+    color: #009933;
+    font-weight: bold;
+    font-size: 10pt;
+    background:url(../images/ico_success.gif) no-repeat left;	
+    padding-left: 30px;
+}
+.error_message{
+    color: #D00000;
+    font-weight: bold;
+    font-size: 10pt;
+    background:url(../images/ico_error.gif) no-repeat left;	
+    padding-left: 30px;
+}
+
+.td_inactive{
+    border: 1px solid #D00000;
+}
+
+.form_elem_margin{
+    margin-left: 42px;
+
+}
+div.scroll{
+    width: 245px;
+    overflow: auto;
+    background-color: #FFF;
+    padding: 0px;
+
+}
+/*------ added by ionut 16 jan --------*/
+
+.tab_active{
+    visibility: visible;
+    display: block;
+    border: 1px solid #DCDCDC;
+    width:100%;
+    background:url(../images/bg_td_2.gif) repeat-x #ffffff;
+
+}
+.tab_inactive{
+    visibility: hidden;
+    display: none;
+    border: 1px solid #DCDCDC;
+    width:100%;	
+    background:url(../images/bg_td_2.gif) repeat-x #ffffff;	
+}
+
+.tab_blue_active{
+    visibility: visible;
+    display: block;
+    width:95%;
+    background:#FFFFFF;
+    color:#000000;
+    padding:20px;
+    border:10px solid #00578E
+
+}
+.tab_blue_inactive{
+    visibility: hidden;
+    display: none;
+    width:100%;	
+    background:#FFFFFF;
+    color:#000000;
+    padding:20px;
+    border:10px solid #00578E
+
+}
+
+
+
+.form_table {
+}
+
+.message_box{
+    background:url(../images/bg_head_table.gif) repeat-x bottom;
+    width:50%;
+    border:1px solid #dcdcdc;
+    margin:10px;
+    padding:20px;
+}
+.field_title{
+    font-size: 8pt;
+    color: #000000;
+    padding-left: 9px;
+    font-weight: bold;
+}
+
+.menu_table{
+    border:1px solid #dcdcdc;
+
+}
+
+.activeItem{
+    color: #00A627;
+    font-weight:bold;
+}
+.inactiveItem{
+    color: #FF0000;
+    font-weight:bold;	
+}
+.closedItem{
+    color: #AAAAAA;
+    font-weight:bold;	
+}
+
+.even{ background-color:#f8f8f8;}
+.odd{ background-color:#f1f1f1;}
+
+.list{width:100%; text-align:left;width:95%;margin:10px 0 10px 0;}
+
+.list th p{flot:left; margin:0;}
+.list tr td{font-size:12px;padding:5px;}
+.list tr td p{float:left; margin:0;}
+
+.list th{ background-color:#e1e1e1; vertical-align:middle; height:10px;padding:5px;}
+.list tr th p{margin:0; float:left;}
+
+.content_description{text-align:left;padding:10px;font-size: 12px;color: #00578E;font-family: arial;margin-left:10px;border-bottom: 1px solid #DDD;}
+
+.s_orderpage_link{margin:0;padding:8px 0;text-align:center;}
+
+.mainorderpage_profile_link{list-style:none; margin:0; padding:0;line-height:28px;height:28px;font-size:0.8em;text-align:center;}
+.mainorderpage_profile_link li {text-align:center; margin:0; padding:0; border-bottom:1px dashed #B4B4B4;clear:both;}
+.mainorderpage_profile_link a {font-weight:normal;text-decoration:none;color:#4A83C6;margin:0; padding:0 10px;}
+.mainorderpage_profile_link a:hover {color:#5390D7;}
+
+.newspapers_categories td {
+    white-space: nowrap;
+}
+
+.tr_hover:hover{
+    background-color:#FFFFBB;
+}
