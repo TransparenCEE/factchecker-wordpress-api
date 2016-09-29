@@ -3,20 +3,20 @@
 The fact-checking module scope is to export the data from a fact-checking data structure (in our case a set of Wordpress tables), to allow the indexing of the data with some info related to the URLs where the content might be used and to have a API that returns the fact-checking elements once a call is made with a certain URL.
 
 2. Description: 
-This module import data, factchecks, from factual.ro wordpress website and insert the data into separated administrative area. 
+This module import data, factchecks, from factual.ro WordPress website and insert the data into separated administrative area. 
 Admin import factchecks page: http://www.factual.ro/api/administrative/factcheck_content.php
-The imported factchecks are listed in admin. A link can be asigned to each item: http://www.factual.ro/api/administrative/factchecks_list.php 
+The imported factchecks are listed in admin. A link can be assigned to each item: http://www.factual.ro/api/administrative/factchecks_list.php 
 
-3. Scripts instalation
+3. Scripts installation
 
 
-Step 1: Uplad the files in a folder (for example /fact-checking_api)
+Step 1: Upload the files in a folder (for example /fact-checking_api)
 
 Step 2: edit the /administrative/common/config.php file to match the database credentials and server configuration
 
 Step 3: Create a new database and import the sql dump to create the table structure (sql file is placed in the factual.ro_db_structure folder)
 
-Step 4: In case the data source has a diffrent setup edit the data retrieval scripts (see 4.A)
+Step 4: In case the data source has a different setup edit the data retrieval scripts (see 4.A)
 
 Step 5: Access the administrative backend  (/administrative) to import the data and start using the module. The user/password credentials are admin/test
 
@@ -27,7 +27,7 @@ Step 5: Access the administrative backend  (/administrative) to import the data 
 
 
 A. Data retrieval
-- /administrative/factcheck_content.php  + /administrative/factcheck_content_exec.php   - Allows the importing of the facts from the external database (in our case the Wordpress custom structure/tables to a abstrractized database that can be used with other types of platforms.)
+- /administrative/factcheck_content.php  + /administrative/factcheck_content_exec.php   - Allows the importing of the facts from the external database (in our case the Wordpress custom structure/tables to a abstracted database that can be used with other types of platforms.)
 
 
 B.  URLs adding to the fact-checking items
@@ -57,15 +57,15 @@ http://www.factual.ro/api/?q=a5605c929a9611efaaa5ba66bbafc7bf
 
 Note: In order to insure the privacy of the Chrome extension user, the communication of the URL between the factual.ro server and the client (the Chrome extension) used the MD5 method to hash the content of the URL. Otherwise the factual.ro admin might know all the browsing history of a particular user.
 
-Data output/response schema (JSON formated):
+Data output/response schema (JSON formatted):
 
 q  = the URL hash code
-declaratie = the declaration that was validated/invalidated by the fact-checking team
+declaratie = the statement that was validated/invalidated by the fact-checking team
 context = the context where the declaration was issued 
 status = the status of the declaration (false, true, partially true)
 concluzie = the conclusion of the fact-checking team
 sursa = the source of the declaration
-URL =  the online resource of the fact-checking iteam 
+URL =  the online resource of the fact-checking item 
 
 
 JSON response schema: 
@@ -155,9 +155,9 @@ index.php - return the factchecks in JSON format
 
 6.Extending the usage of the scripts
 
-The importing of the data can be changed to accomodate various platforms(custom, or ready-made) that holds the fact-checking items. In our case (factual.ro) the solution was based on a Wordpress platform, but by editing   factcheck_content_exec.php you can customize the solution to different setups.
+The importing of the data can be changed to accommodate various platforms(custom, or ready-made) that holds the fact-checking items. In our case (factual.ro) the solution was based on a Wordpress platform, but by editing   factcheck_content_exec.php you can customize the solution to different setups.
 
-Beside editing that script (factcheck_content_exec.php ) - to match a differnt set of tables in a WP installation or to retrieve the info from other setups (for example, Drupal, or a custom platform, or different type of databases) - the other script can be used unmodified.
+Beside editing that script (factcheck_content_exec.php ) - to match a different set of tables in a WP installation or to retrieve the info from other setups (for example, Drupal, or a custom platform, or different type of databases) - the other script can be used unmodified.
 
 
 
