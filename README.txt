@@ -1,10 +1,17 @@
 This module import data, factchecks, from factual.ro wordpress website and insert the data into separated administrative area. 
+
+
 Admin import factchecks page: http://www.factual.ro/api/administrative/factcheck_content.php
+
+
 The imported factchecks are listed in admin. A link can be asigned to each item: http://www.factual.ro/api/administrative/factchecks_list.php 
+
+
 Factchecks can be retreived using JSON API. API request example http://www.factual.ro/api/?q=a5605c929a9611efaaa5ba66bbafc7bf
 "q" variable is a md5 code of the assigned link.
+
 Response:
-{
+`{
 "q":"a5605c929a9611efaaa5ba66bbafc7bf",
 "data":{
 "147":{
@@ -17,7 +24,9 @@ Response:
 "date":1468303937
 }
 }
-}
+}`
+
+
 The response contains factchecks assigned with the requested link.
 
 Admin API stats page provide statistics about API requests http://www.factual.ro/api/administrative/api_stats.php
@@ -32,4 +41,4 @@ Admin scripts:
 - factchecks_csv_import_ajax.php - assign multiple links from a CV file
 - api_stats.php - API statistics
 API SCRIPT:
-- index.php - return the factchecks in JSON format
+- index.php - returns the factchecks in JSON format
