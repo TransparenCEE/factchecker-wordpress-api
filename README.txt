@@ -12,13 +12,14 @@ The imported factchecks are listed in admin. A link can be assigned to each item
 
 Step 1: Upload the files in a folder (for example /fact-checking_api)
 
-Step 2: edit the /administrative/common/config.php file to match the database credentials and server configuration
+Step 2: Create a new database for an administrative panel on the same mysql server as Wordpress is. Import the sql dump to create the table structure (sql file is placed in the factual.ro_db_structure folder)
+
+Step 3: edit the /administrative/common/config.php file to match the database credentials and server configuration
+
+$cfg_db_array['db_user'], $cfg_db_array['db_passwd'] and  $cfg_db_array['db_host'] are server connect parameters
 
 $cfg_db_array['db_database'] points to administrative panel database
 $cfg_db_array['db_wp'] points to wordpress database
-$cfg_db_array['db_user'], $cfg_db_array['db_passwd'] and  $cfg_db_array['db_host'] are server connect parameters
-
-Step 3: Create a new database and import the sql dump to create the table structure (sql file is placed in the factual.ro_db_structure folder)
 
 Step 4: In case the data source has a different setup edit the data retrieval scripts (see 4.A)
 
