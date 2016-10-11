@@ -34,6 +34,13 @@ if ($_GET['action'] == 'delete_search') {
                     </td>
                 </tr>
                 <tr>
+                    <td align="left" style="padding-left:35px;">Shows all the factchecks imported into the plugin database.<br>
+Allows to assign links to each factchecks. The plugin will show the content of the particular factcheck if the plugin user navigates on that link.<br>
+Allows to define a content snippet that will be shown by the plugin.<br>
+The links can be added one-by-one for each factcheck or can be added in bulk, by importing them from a CSV file.
+                    </td>
+                </tr>                 
+                <tr>
                     <td align="center" valign="top">
                         <!--Start content-->
 

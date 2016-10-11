@@ -1,0 +1,33 @@
+The Factchecking Administrative Module
+
+The Factchecking Administrative Module allows the system administrator to import the content from the primary factchecking database and to add the necessary content/metadata for matching it with the target websites (the ones where the factchecking plugin delivers content)
+
+Module features:
+
+1.Admin users 
+Allows the admin user management, by adding new users, assigning user rights, defining password.
+
+2.Import Factchecks
+
+This function allow the importing and updating of the factcheck items from the primary datatabase. The pressing of the "import" button copy the data into the plugin database in a format optimal for the delivering of the data via the API.
+
+3. Factchecks list
+Shows all the factchecks imported into the plugin database.
+Allows to assign links to each factchecks. The plugin will show the content of the particular factcheck if the plugin user navigates on that link.
+Allows to define a content snippet that will be shown by the plugin.
+The links can be added one-by-one for each factcheck or can be added in bulk, by importing them from a CSV file
+
+4. Factchecks links
+Show all the links where a factcheck will be shown by the plugin.
+Allows the adding/deleting of the links
+
+
+6. API stats
+Show the API usage stats for each day/week/stats.
+The table contains:
+a. Total = total number of factcheck shown (impressions)
+b. Unique = the number of different factchecks show
+c). Top factchecks = top 3 factchecks ordered by the number of impression
+
+The stats module also shows the list of the top factchecks for each period based on the number of impressions, and the top links where a factcheck was displayed by the plugin (based also on the number of impressions)
+

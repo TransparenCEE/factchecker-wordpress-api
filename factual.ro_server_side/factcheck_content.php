@@ -31,9 +31,14 @@ $no_factchecks2update = $db_read->queryOne($sql_no_factchecks2update);
                     </td>
                 </tr>
                 <tr>
+                    <td align="left" style="padding-left:35px;">This function allow the importing and updating of the factcheck items from the primary datatabase. 
+                        <br>The pressing of the "import" button copy the data into the plugin database in a format optimal for the delivering of the data via the API.
+                    </td>
+                </tr>                
+                <tr>
                     <td align="center" valign="top">
                         <!--Start content-->						 
-                        <div style="margin:30px 0 0 35px;">
+                        <div style="margin:10px 0 0 35px;">
 
                             <?php
                             if ($_GET['msg'] && !empty($_GET['msg'])) {

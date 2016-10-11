@@ -29,10 +29,11 @@ include_once(dirname(__FILE__) . '/common/header.inc.php');
                         </DIV></TD>
                 </TR>
                 <!-- end section title -->
-                <TR>
+                <tr>
+                    <td align="left" style="padding-left:35px;">Allows the admin user management, by adding new users, assigning user rights, defining password.</td>
+                </tr>
                 <TR>
                     <TD align="center">
-
                         <table border='0' width="100%" cellspacing='0' cellpadding='0' class="grid">
                             <tr>
                                 <th class="head">Username</th>

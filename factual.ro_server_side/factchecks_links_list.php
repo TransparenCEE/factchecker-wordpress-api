@@ -33,6 +33,11 @@ if ($_GET['action'] == 'delete_search') {
                     </td>
                 </tr>
                 <tr>
+                    <td align="left" style="padding-left:35px;">Show all the links where a factcheck will be shown by the plugin.<br>
+Allows the adding/deleting of the links.
+                    </td>
+                </tr>                 
+                <tr>
                     <td align="center" valign="top">
                         <!--Start content-->
 

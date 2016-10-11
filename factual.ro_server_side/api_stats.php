@@ -80,6 +80,17 @@ $arr_english_short_months_names = [
                     </td>
                 </tr>
                 <tr>
+                    <td align="left" style="padding-left:35px;">
+                        Show the API usage stats for each day/week/stats.<br>
+The table contains:<br>
+a. Total = total number of factcheck shown (impressions)<br>
+b. Unique = the number of different factchecks show<br>
+c). Top factchecks = top 3 factchecks ordered by the number of impression<br>
+<br>
+The stats module also shows the list of the top factchecks for each period based on the number of impressions, and the top links where a factcheck was displayed by the plugin (based also on the number of impressions).
+                    </td>
+                </tr>                  
+                <tr>
                     <td align="center" valign="top">
                         <!--Start content-->						 
                         <div style="margin:30px 0 0 35px;text-align: left; font-weight: bold; font-size: 14px;">
