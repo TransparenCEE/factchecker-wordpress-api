@@ -25,9 +25,29 @@ function validateLoginForm(frm){
 			<tr>
 				<td><div class="error"><strong>Authentification required!</strong></div></td>
 			</tr>
-			<?php     if($_GET['msg']=='login_error'){?>
+			<?php     if(isset($_GET['msg']) ) {?>
 			<tr>
-				<td><span class="error"><?php     echo $cfg_portal_errors_array['login']['login_error']; ?></span></td>
+				<td style="width: 400px;">
+					<div class="message_box" style="padding:10px;"><div class="error_message" style="padding:5px; text-align: right;">
+							<?php 
+							switch ($_GET['msg']) {
+								case 'empty_fields':
+									echo 'Both username and password are requierd!';
+									break;
+								case 'no_user':
+									echo 'Username was not found!';
+									break;
+								case 'authentication_failed':
+									echo 'Authentication failed!';
+									break;
+								default:
+									echo 'Authentication failed!';
+									break;
+							
+							}
+							?>
+					</div></div>
+				</td>
 			</tr>
 			<?php     } ?>
 			<tr>

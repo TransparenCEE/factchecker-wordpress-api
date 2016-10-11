@@ -112,7 +112,7 @@ if ($_GET['retract'] == 'y') {
 //echo "<pre>";print_r($_SESSION['admin_module_expanded']);echo "</pre>";
 $treeMenu->expand_to_multiple($_SESSION['admin_module_expanded']);
 ?>
-Salut: <b><?php echo $user_info['username'] ?></b>,
+Hello: <b><?php echo $user_info['username'] ?></b>,
 <input type='hidden' id='url'>
 <div class="scroll" id='divcontainer'>
     <table border="0" cellspacing="0" cellpadding="0" width="100%" class="menu_table">

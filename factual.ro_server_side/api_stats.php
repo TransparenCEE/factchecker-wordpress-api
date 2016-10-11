@@ -855,10 +855,10 @@ $arr_english_short_months_names = [
                                         <table width="100%" cellpadding="3" cellspacing="3" border="0" class="grid">
                                             <tr>
                                                 <th align="center" width="2%">Inc</th>
-                                                <th align="left"  width="15%"> Titlu  </th>
+                                                <th align="left"  width="15%"> Title  </th>
                                                 <th align="left"  width="15%"> Publish Date  </th>
-                                                <th align="left"  width="15%"> Accesari unice  </th>
-                                                <th align="left"  width="15%"> Accesari totale </th>						
+                                                <th align="left"  width="15%"> Unique Visits  </th>
+                                                <th align="left"  width="15%"> Total Visits </th>						
                                             </tr>
 
                                             <?php
@@ -1028,10 +1028,10 @@ $arr_english_short_months_names = [
                                         <table width="100%" cellpadding="3" cellspacing="3" border="0" class="grid">
                                             <tr>
                                                 <th align="center" width="2%">Inc</th>
-                                                <th align="left"  width="15%"> Titlu  </th>
+                                                <th align="left"  width="15%"> Title  </th>
                                                 <th align="left"  width="15%"> Publish Date  </th>
-                                                <th align="left"  width="15%"> Accesari unice  </th>
-                                                <th align="left"  width="15%"> Accesari totale </th>						
+                                                <th align="left"  width="15%"> Unique Visits  </th>
+                                                <th align="left"  width="15%"> Total Visits </th>						
                                             </tr>
 
                                             <?php

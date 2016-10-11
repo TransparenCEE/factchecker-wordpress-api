@@ -42,17 +42,7 @@ if (is_numeric($_GET['edit_id'])) {
     $res_edit = $db_write->query($sql_edit);
     $row_edit = $res_edit->fetchRow();
 }
-if (isset($_GET['error'])) {
-    switch ($_GET['error']) {
-        case'not_filled':
-            $error_msg = "Username and password must contain at least 4 characters";
-            break;
 
-        case'user_exists':
-            $error_msg = "Username already exists";
-            break;
-    }
-}
 $deal_rights_array = array();
 include_once(dirname(__FILE__) . '/common/header.inc.php');
 ?>
@@ -121,14 +111,16 @@ include_once(dirname(__FILE__) . '/common/header.inc.php');
             return false;
         } //end if
 
-        //validate the password
+		<?php if(!isset($row_edit['id_user'])) { ?>
+
+        //validate the username
         //*********************************************
         if (isEmpty(frm.username)) {
             alert('Please fill in the username!');
             frm.username.focus();
             return false;
         } //end if
-
+		
         //validate the password
         //*********************************************
         if (isEmpty(frm.password)) {
@@ -136,9 +128,10 @@ include_once(dirname(__FILE__) . '/common/header.inc.php');
             frm.password.focus();
             return false;
         } //end if
-
         //*********************************************
         return true;
+		
+		<?php } ?>
     }
 //end function --> validateLoginForm()
 </script>
@@ -176,61 +169,61 @@ include_once(dirname(__FILE__) . '/common/header.inc.php');
                 <TR>
                     <TD align="center">
                         <?php
-                        if (!empty($_SESSION['error'])) {
+                        if (!empty($_SESSION['user']['error'])) {
                             ?>
-                            <div class="message_box"><div class="error_message"><?php echo $_SESSION['error']; ?></div></div>
+                            <div class="message_box"><div class="error_message"><?php echo $_SESSION['user']['error']; ?></div></div>
                             <?php
                         }
                         ?>
                         <?php
-                        if (!empty($_SESSION['success'])) {
+                        if (!empty($_SESSION['user']['success'])) {
                             ?>
-                            <div class="message_box"><div class="success_message"><?php echo $_SESSION['success']; ?></div></div>
+                            <div class="message_box"><div class="success_message"><?php echo $_SESSION['user']['success']; ?></div></div>
                             <?php
                         }
                         ?>
                         <table border='0' width="100%" cellspacing='0' cellpadding='0' class="grid">
                             <form action="admin_users_exec.php" method="post" onsubmit="return validateUserManagForm(this);">
-
-                                <?php
-                                if (isset($error_msg)) {
-                                    ?>
-                                    <tr>
-                                        <td colspan="2"><span style="color: #FF0000"><?php echo $error_msg; ?></span></td>
-                                    </tr>
-                                    <?php
-                                }
-                                ?>
                                 <tr>
                                     <td colspan="2" align="right">
                                         <?php if (!empty($_GET['edit_id'])) { ?>
                                             <?php if ($row_edit['is_active'] == 'Y') { ?>
-                                                <img src="<?php echo $cfg_array['site_root_path']; ?>design/images/ico_suspend_contract.gif" width="20" height="20"><a href="admin_users_exec.php?id_user=<?php echo $_GET['edit_id']; ?>&action=inactivate&page_no=<?php echo $page_no; ?>" onclick="return confirm('Are you sure you want to inactivate this user?');"><b>activate/b></a>
+                                                <img src="<?php echo $cfg_array['site_root_path']; ?>design/images/ico_suspend_contract.gif" width="20" height="20"><a href="admin_users_exec.php?id_user=<?php echo $_GET['edit_id']; ?>&action=inactivate&page_no=<?php echo $page_no; ?>" onclick="return confirm('Are you sure you want to inactivate this user?');"><b>disable the user (he is active)</b></a>
                                             <?php } else { ?>
-                                                <img src="<?php echo $cfg_array['site_root_path']; ?>design/images/ico_activate_contract.gif" width="20" height="20"><a href="admin_users_exec.php?id_user=<?php echo $_GET['edit_id']; ?>&action=activate&page_no=<?php echo $page_no; ?>" onclick="return confirm('Are you sure you want to activate this user?');"><b>inactivate</b></a>
+                                                <img src="<?php echo $cfg_array['site_root_path']; ?>design/images/ico_activate_contract.gif" width="20" height="20"><a href="admin_users_exec.php?id_user=<?php echo $_GET['edit_id']; ?>&action=activate&page_no=<?php echo $page_no; ?>" onclick="return confirm('Are you sure you want to activate this user?');"><b>activate the user (he is disabled)</b></a>
                                             <?php } ?>
                                         <?php } ?>
                                     </td>
                                 </tr>
                                 <tr>
+                                    <td>Username:</td>
+									<td>
+										<?php if(!isset($row_edit['id_user'])) { ?>
+										
+										<input type="text" class="input" value="<?php echo $_SESSION['user']['username']; ?>" name="username" >
+										
+										<?php } else { ?>
+										
+										<b> <?php echo $row_edit['username']; ?>
+										
+										<?php } ?>
+									</td>
+                                </tr>
+                                <tr>
                                     <td>Email:</td>
-                                    <td><input type="text" class="input" value="<?php echo( is_numeric($_GET['edit_id']) ) ? $row_edit['email'] : $_SESSION['email']; ?>" name="email"></td>
+                                    <td><input type="text" class="input" value="<?php echo( is_numeric($_GET['edit_id']) ) ? $row_edit['email'] : $_SESSION['user']['email']; ?>" name="email"></td>
                                 </tr>
                                 <tr>
                                     <td>First Name:</td>
-                                    <td><input type="text" class="input" value="<?php echo( is_numeric($_GET['edit_id']) ) ? $row_edit['first_name'] : $_SESSION['first_name']; ?>" name="first_name"></td>
+                                    <td><input type="text" class="input" value="<?php echo( is_numeric($_GET['edit_id']) ) ? $row_edit['first_name'] : $_SESSION['user']['first_name']; ?>" name="first_name"></td>
                                 </tr>
                                 <tr>
                                     <td>Last Name:</td>
-                                    <td><input type="text" class="input" value="<?php echo( is_numeric($_GET['edit_id']) ) ? $row_edit['last_name'] : $_SESSION['last_name']; ?>" name="last_name"></td>
+                                    <td><input type="text" class="input" value="<?php echo( is_numeric($_GET['edit_id']) ) ? $row_edit['last_name'] : $_SESSION['user']['last_name']; ?>" name="last_name"></td>
                                 </tr>
                                 <tr>
-                                    <td>Username:</td>
-                                    <td><input type="text" class="input" value="<?php echo( is_numeric($_GET['edit_id']) ) ? $row_edit['username'] : $_SESSION['username']; ?>" name="username"></td>
-                                </tr>
-                                <tr>
-                                    <td>Password:</td>
-                                    <td><input class="input" type="text" value="<?php echo( is_numeric($_GET['edit_id']) ) ? $row_edit['password'] : $_SESSION['password']; ?>" name="password"></td>
+									<td><?php if(is_numeric($_GET['edit_id'])) { ?> Add new password <?php } else { ?>  Password: <?php } ?></td>
+                                    <td><input class="input" type="password" value="" name="password"></td>
                                 </tr>
 
                                 <tr>
@@ -374,5 +367,6 @@ include_once(dirname(__FILE__) . '/common/header.inc.php');
 </table>
 <!-- End Main Content -->
 <?php
+unset($_SESSION['user']);
 include_once(dirname(__FILE__) . "/common/footer.inc.php");
 ?>

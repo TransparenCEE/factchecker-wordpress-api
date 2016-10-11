@@ -41,7 +41,7 @@ if ($_GET['action'] == 'delete_search') {
                             <tr>
                                 <td>
                                     <form action="<?php print $_SERVER['PHP_SELF']; ?>" method="POST">
-                                        <b>Filtres:</b>
+                                        <b>Filters:</b>
                                         <?php if ($_SESSION['factchecks_search'] != '' || $_SESSION['factcheck_status'] != '') { ?>
                                             <font color="Red">
                                             <strong>
@@ -52,7 +52,8 @@ if ($_GET['action'] == 'delete_search') {
                                         <?php } ?>
 
                                         <br/>
-                                        Search (Title, Categorie, Context, Declaratie, Concluzie, Ce verificam, Verificare) :
+                                        <!--Search (Title, Categorie, Context, Declaratie, Concluzie, Ce verificam, Verificare) :-->
+                                        Search (Title, Category, Context, Statement, Conclusion, What to verify, Verification) :
                                         <input type="text" size="25" name="factchecks_search" value="<?php print $_SESSION['factchecks_search'] ?>">
 
                                         &nbsp;File Status:
@@ -67,7 +68,7 @@ if ($_GET['action'] == 'delete_search') {
 
 
                                         &nbsp;&nbsp;&nbsp;
-                                        <input type="submit" value="Filtreaza" class="input">
+                                        <input type="submit" value="Filter" class="input">
                                         <input type="hidden" name="session" value="on">
                                     </form>
                                 </td>
@@ -181,16 +182,16 @@ if ($_GET['action'] == 'delete_search') {
 
                             <td class="<?php echo $td_class; ?>" id="<?php print ++$count_inside_fields ?>_<?php print $id_element ?>" valign="top">
                                 <span class="sitetext1">
-                                    <strong>Title:</strong> <a href="<?php echo $row_factchecked['factcheck_link']; ?>" target="_blank"><?php echo $row_factchecked['post_title']; ?></a> </br>
-                                    <strong>Categoria: </strong><?php echo $row_factchecked['categoria']; ?> </br>
+                                    <strong>Title(Titlu):</strong> <a href="<?php echo $row_factchecked['factcheck_link']; ?>" target="_blank"><?php echo $row_factchecked['post_title']; ?></a> </br>
+                                    <strong>Category(Categorie): </strong><?php echo $row_factchecked['categoria']; ?> </br>
                                     <strong>Context: </strong><?php echo strip_tags($row_factchecked['context']); ?> </br>
-                                    <strong>Declaratie: </strong><?php echo strip_tags($row_factchecked['declaratie']); ?> </br>
-                                    <strong>Ce verificam?: </strong><?php echo strip_tags($row_factchecked['ce_verificam']); ?> </br>
-                                    <strong>Verificare: </strong><?php echo strip_tags($row_factchecked['verificare']); ?> </br>
-                                    <strong>Concluzie: </strong><?php echo strip_tags($row_factchecked['concluzie']); ?> </br>
-                                    <strong>Status: </strong><?php echo $row_factchecked['status']; ?> </br>
-                                    <strong>Sursa: </strong><?php echo $row_factchecked['url_sursa']; ?> </br>
-                                    <strong>Data publicarii: </strong><?php echo $row_factchecked['post_datetime']; ?> </br>
+                                    <strong>Statement (Declaratie): </strong><?php echo strip_tags($row_factchecked['declaratie']); ?> </br>
+                                    <strong>What to verify? (Ce verificam?): </strong><?php echo strip_tags($row_factchecked['ce_verificam']); ?> </br>
+                                    <strong>Verification (Verificare): </strong><?php echo strip_tags($row_factchecked['verificare']); ?> </br>
+                                    <strong>Conclusion (Concluzie): </strong><?php echo strip_tags($row_factchecked['concluzie']); ?> </br>
+                                    <strong>Status (Status): </strong><?php echo $row_factchecked['status']; ?> </br>
+                                    <strong>Source (Sursa): </strong><?php echo $row_factchecked['url_sursa']; ?> </br>
+                                    <strong>Publish date (Data publicarii): </strong><?php echo $row_factchecked['post_datetime']; ?> </br>
 
 
         <!-- </br><strong>ID(wp_posts):</strong> <?php echo $row_factchecked['ID']; ?> </br> -->
@@ -477,8 +478,6 @@ if ($_GET['action'] == 'delete_search') {
 
                                                 function disableAllInputs(id) {
                                                     $(".check2disable").each(function () {
-//		console.log($(this).attr('id'));
-                                                        console.log('each id=' + $(this).attr('id') + 'send id -' + id);
                                                         if ($(this).attr('id') != id) {
                                                             $(this).hide();
                                                         }

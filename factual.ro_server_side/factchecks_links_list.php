@@ -28,7 +28,7 @@ if ($_GET['action'] == 'delete_search') {
                 <tr>
                     <td align="center">
                         <div class="pageTitle">
-                            Factchechs Links List
+                            Factchecks Links List
                         </div>
                     </td>
                 </tr>
@@ -40,23 +40,21 @@ if ($_GET['action'] == 'delete_search') {
                             <tr>
                                 <td>
                                     <form action="<?php print $_SERVER['PHP_SELF']; ?>" method="POST">
-                                        <b>Filtres:</b>
+                                        <b>Filters:</b>
                                         <?php if ($_SESSION['file_on_server_search'] != '' || $_SESSION['factcheck_status'] != '' || $_SESSION['file_privacy'] != '') { ?>
                                             <font color="Red">
                                             <strong>
-                                                <b>activa&nbsp;</b>
+                                                <b>active&nbsp;</b>
                                             </strong>
                                             </font>
-                                            <a href="<?php print $_SERVER['PHP_SELF']; ?>?action=delete_search"><b>sterge</b></a>&nbsp;&nbsp;
+                                            <a href="<?php print $_SERVER['PHP_SELF']; ?>?action=delete_search"><b>delete</b></a>&nbsp;&nbsp;
                                         <?php } ?>
 
                                         <br/>
                                         Search (Factcheck Title, Link url, Snippet) :
                                         <input type="text" size="25" name="file_on_server_search" value="<?php print $_SESSION['file_on_server_search'] ?>">
-
-
                                         &nbsp;&nbsp;&nbsp;
-                                        <input type="submit" value="Filtreaza" class="input">
+                                        <input type="submit" value="Filter" class="input">
                                         <input type="hidden" name="session" value="on">
                                     </form>
                                 </td>
@@ -140,7 +138,7 @@ if ($_GET['action'] == 'delete_search') {
                     <th align="left" width="15%"> Snippet </th>
                     <?php /* <th align="left" width="10%"> q </th> */ ?>
                     <th align="left" width="10%"> Insert date </th>
-                    <th align="left" width="10%"> Actiuni </th>
+                    <th align="left" width="10%"> Actions </th>
                 </TR>
 
                 <?php
@@ -275,7 +273,7 @@ if ($_GET['action'] == 'delete_search') {
                                                 return;
                                             }
                                             postData = {action: action, id_link: id_link, snippet: snippet};
-                                            console.log(postData);
+//                                            console.log(postData);
                                             break;
                                         case "disable_link":
                                             postData = {action: action, id_link: id_link};
@@ -300,7 +298,7 @@ if ($_GET['action'] == 'delete_search') {
                                                     var msg_type = str[0];
                                                     var msg_value = str[1];
                                                     var snippet_ret = str[2];
-                                                    console.log(msg_type + ' - ' + msg_value);
+//                                                    console.log(msg_type + ' - ' + msg_value);
                                                     if (msg_type == 'linkNoExists') {
 
                                                     }
@@ -310,9 +308,9 @@ if ($_GET['action'] == 'delete_search') {
                                                     }
                                                     if (msg_type == 'snippetModified') {
                                                         disableAllInputs();
-                                                        console.log(snippet_ret);
+//                                                        console.log(snippet_ret);
                                                         $('#snippet_' + id_link).html(snippet_ret);
-                                                        $("#tx_snippet_" + id_link).val('');
+//                                                        $("#tx_snippet_" + id_link).val('');
                                                         $('#msg_snippet_' + id_link).html('<font style="font-size: 15px;" color="red"><b>The snippet is modified!</b></font>');
                                                         $('#snippet_' + id_link).show();
                                                         $('#msg_snippet_' + id_link).show();

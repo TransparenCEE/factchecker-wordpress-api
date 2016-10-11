@@ -7,6 +7,10 @@ $last_post_id_imported = $db_read->queryOne($sql_last_post_id_imported);
 $sql_no_factcheck2import = "SELECT COUNT(ID) FROM {$cfg_db_array['db_wp']}.`wp_posts` WHERE ID > '$last_post_id_imported' AND {$cfg_extra['factcheck_publish_cond']} ";
 $sql_no_factcheck2import .= $cfg_extra['factcheck_order2import'];
 $no_factcheck2import = $db_read->queryOne($sql_no_factcheck2import);
+
+$sql_no_factchecks2update = "SELECT  COUNT(a.ID)  FROM  factcheck_content as a, {$cfg_db_array['db_wp']}.wp_posts as b WHERE a.ID = b.ID AND b.post_modified != a.post_modified_datetime ";
+$no_factchecks2update = $db_read->queryOne($sql_no_factchecks2update);
+
 ?>
 
 <!-- Start Main Content -->
@@ -43,39 +47,37 @@ $no_factcheck2import = $db_read->queryOne($sql_no_factcheck2import);
                                 <?php
                             }
                             ?>
-
-                            <fieldset style="width:450px;float:left;margin-left:0px;">
-                                <legend>Import Last Factchecks</legend>
+							
+							
+                            <fieldset style="width:450px;float:left;margin-left:0px; height: 100px;text-align: center;">
+                                <legend style="font-weight: bold">Import new Factchecks</legend>
+								<div style="text-align: left;text-align: left;width:450px;"> Import the new facts inserted in WordPress. Imported facts are listed on  <a href="factchecks_list.php">Factchecks list</a> page.</div>
+								<br>
                                 <?php if ($no_factcheck2import > 0) { ?>
-
+								There are <?php echo $no_factcheck2import; ?> factchecks to import. <br/>
                                     <form action="factcheck_content_exec.php" method="POST" enctype="multipart/form-data">
                                         <input type="hidden" name="action" value="import">
                                         <input type="hidden" name="last_id" value="<?php echo $last_post_id_imported; ?>">
-                                        <table border='0' class="list" style="width:450px;float:left;">
-                                            <tr>
-                                                <td><input type="submit" value="Factchecks import (<?php echo $no_factcheck2import; ?> new)"></td>
-                                            </tr>	
-                                        </table>
+                                        <div style="width:450px;"><input type="submit" value="Factchecks import (<?php echo $no_factcheck2import; ?> new)"></div>
                                     </form>
-
                                 <?php } else { ?>
-
-                                    No factchecked to import!
-
+								<b>There is no new factcheck to import!</b>
                                 <?php } ?>
-
                             </fieldset>   
 
-                            <fieldset style="width:450px;float:left;">
-                                <legend>Update Factchecks</legend>
+                            <fieldset style="width:450px;float:left; height: 100px;text-align: center;">
+                                <legend style="font-weight: bold">Update Factchecks</legend>
+								<div style="text-align: left;text-align: left;width:450px;">When a fact was modified in WordPress, it should be also updated in Administraitve panel.</div>
+								<br>
+								<?php if($no_factchecks2update > 0 ) { ?>
+								There are <?php echo $no_factchecks2update; ?> factchecks to update. <br/>
                                 <form action="factcheck_content_exec.php" method="POST" enctype="multipart/form-data">
                                     <input type="hidden" name="action" value="update">
-                                    <table border='0' class="list" style="width:450px;float:left;">
-                                        <tr>
-                                            <td><input type="submit" value="Factchecks update"></td>
-                                        </tr>	
-                                    </table>
+                                    <div style="width:450px;"><input type="submit" value="Factchecks update"></div>
                                 </form>
+								<?php } else { ?>
+                                <b>There is no factcheck to update!</b>
+                                <?php } ?>
                             </fieldset>      
 
                         </div>
