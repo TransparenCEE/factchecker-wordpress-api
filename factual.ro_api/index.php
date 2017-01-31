@@ -1,5 +1,6 @@
 <?php
 header('Content-Type: application/json');
+header('Access-Control-Allow-Origin: *');
 include_once(dirname(__FILE__) . "/administrative/common/constructor.inc.php");
 include_once('Pager/Pager_Wrapper.php');
 $no_items_per_page = 20;
